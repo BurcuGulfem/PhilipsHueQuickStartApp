@@ -1,4 +1,4 @@
-package com.philips.lighting.quickstart;
+package com.philips.lighting.samples;
 
 
 import android.app.Fragment;
@@ -16,6 +16,7 @@ import com.philips.lighting.model.PHBridgeResource;
 import com.philips.lighting.model.PHHueError;
 import com.philips.lighting.model.PHLight;
 import com.philips.lighting.model.PHLightState;
+import com.philips.lighting.quickstart.R;
 
 import java.util.List;
 import java.util.Map;
@@ -31,6 +32,10 @@ public class RandomLightsFragment extends Fragment {
     private static final int MAX_HUE=65535;
     public RandomLightsFragment() {
         // Required empty public constructor
+    }
+
+    public static RandomLightsFragment newInstance() {
+        return new RandomLightsFragment();
     }
 
     @Override
@@ -99,6 +104,7 @@ public class RandomLightsFragment extends Fragment {
 
     @Override
     public void onDestroy() {
+        super.onDestroy();
         PHBridge bridge = phHueSDK.getSelectedBridge();
         if (bridge != null) {
 
@@ -107,7 +113,6 @@ public class RandomLightsFragment extends Fragment {
             }
 
             phHueSDK.disconnect(bridge);
-            super.onDestroy();
         }
     }
 

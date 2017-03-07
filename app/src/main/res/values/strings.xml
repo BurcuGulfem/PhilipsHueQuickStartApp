@@ -7,8 +7,8 @@
     <string name="btn_refresh">Refresh</string>
     <string name="btn_find_bridge">Find new bridge</string>
     <string name="btn_random">Random Lights</string>
-    <string name="search_progress">Searching ...</string>
-    <string name="connecting">Connecting ...</string>
+    <string name="search_progress">Searching …</string>
+    <string name="connecting">Connecting …</string>
     <string name="btn_ok">Ok</string>
     <string name="btn_cancel">Cancel</string>
     <string name="txt_could_not_connect">No connection</string>
@@ -29,6 +29,14 @@
     <string name="title_error">Error</string>
     <string name="txt_last_heartbeat">Last Heartbeat : </string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- samples -->
+
+    <!-- add the user-visible name of your sample here -->
+    <string-array name="samples_list">
+        <item>Random Lights Sample</item>
+        <item>Add another sample here</item>
+    </string-array>
+
+    <string name="dummy_fragment">Nothing to do here, go back!</string>
+
 </resources>
