@@ -1,11 +1,10 @@
 package com.philips.lighting.quickstart;
 
-import java.util.List;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,6 +24,8 @@ import com.philips.lighting.model.PHBridge;
 import com.philips.lighting.model.PHHueError;
 import com.philips.lighting.model.PHHueParsingError;
 
+import java.util.List;
+
 /**
  * PHHomeActivity - The starting point in your own Hue App.
  * 
@@ -38,7 +39,7 @@ import com.philips.lighting.model.PHHueParsingError;
  * 
  *
  */
-public class PHHomeActivity extends Activity implements OnItemClickListener {
+public class PHHomeActivity extends AppCompatActivity implements OnItemClickListener {
 
     private PHHueSDK phHueSDK;
     public static final String TAG = "QuickStart";
@@ -51,7 +52,8 @@ public class PHHomeActivity extends Activity implements OnItemClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bridgelistlinear);
-        
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         // Gets an instance of the Hue SDK.
         phHueSDK = PHHueSDK.create();
         
@@ -106,7 +108,7 @@ public class PHHomeActivity extends Activity implements OnItemClickListener {
             Log.w(TAG, "Access Points Found. " + accessPoint.size());
 
             PHWizardAlertDialog.getInstance().closeProgressDialog();
-            if (accessPoint != null && accessPoint.size() > 0) {
+            if (accessPoint.size() > 0) {
                     phHueSDK.getAccessPointsFound().clear();
                     phHueSDK.getAccessPointsFound().addAll(accessPoint);
 
