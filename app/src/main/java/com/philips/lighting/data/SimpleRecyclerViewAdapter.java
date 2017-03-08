@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * Created by burcuarabaci on 07/03/17.
  */
 
-public class SamplesListAdapter extends RecyclerView.Adapter<SamplesListAdapter.SamplesViewHolder> {
+public class SimpleRecyclerViewAdapter extends RecyclerView.Adapter<SimpleRecyclerViewAdapter.SamplesViewHolder> {
 
     private ArrayList<String> samplesList;
     private RecyclerViewClickListener<Integer, View> onItemClickListener;
@@ -28,7 +28,7 @@ public class SamplesListAdapter extends RecyclerView.Adapter<SamplesListAdapter.
      * @param samplesList                 Names of the samples
      * @param onRecyclerViewClickListener clickListener returns position and the view of the clicked item
      */
-    public SamplesListAdapter(ArrayList<String> samplesList, RecyclerViewClickListener<Integer, View> onRecyclerViewClickListener) {
+    public SimpleRecyclerViewAdapter(ArrayList<String> samplesList, RecyclerViewClickListener<Integer, View> onRecyclerViewClickListener) {
         this.samplesList = samplesList;
         this.onItemClickListener = onRecyclerViewClickListener;
     }

@@ -1,11 +1,9 @@
 package com.philips.lighting.quickstart;
 
-import java.util.List;
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
 
 import com.philips.lighting.hue.sdk.PHAccessPoint;
@@ -15,6 +13,8 @@ import com.philips.lighting.hue.sdk.PHSDKListener;
 import com.philips.lighting.model.PHBridge;
 import com.philips.lighting.model.PHHueParsingError;
 
+import java.util.List;
+
 /**
  * Activity which gives hint for manual pushlink. needs to add <activity
  * android:theme="@android:style/Theme.Dialog" /> in manifest file
@@ -22,7 +22,7 @@ import com.philips.lighting.model.PHHueParsingError;
  * 
  */
 
-public class PHPushlinkActivity extends Activity {
+public class PHPushlinkActivity extends AppCompatActivity {
     private ProgressBar pbar;
     private static final int MAX_TIME=30;
     private PHHueSDK phHueSDK;

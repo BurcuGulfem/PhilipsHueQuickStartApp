@@ -5,15 +5,15 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.philips.lighting.data.RecyclerViewClickListener;
-import com.philips.lighting.data.SamplesListAdapter;
+import com.philips.lighting.data.SimpleRecyclerViewAdapter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 /**
@@ -24,17 +24,27 @@ import java.util.Arrays;
  */
 public class SamplesListFragment extends Fragment {
 
+    private static final String LIST_ITEMS = "list items";
+    private static final String TAG = "Samples List Fragment";
     private OnFragmentInteractionListener mListener;
-    private SamplesListAdapter mAdapter;
+    private SimpleRecyclerViewAdapter mAdapter;
 
     public SamplesListFragment() {
         // Required empty public constructor
     }
 
+    public static Fragment newInstance(ArrayList<String> listitems) {
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList(LIST_ITEMS, listitems);
+        Fragment samplesListFragment = new SamplesListFragment();
+        samplesListFragment.setArguments(bundle);
+        return samplesListFragment;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final String[] samples = getResources().getStringArray(R.array.samples_list);
+
         RecyclerViewClickListener<Integer, View> onRecylerViewItemClicked = new RecyclerViewClickListener<Integer, View>() {
             @Override
             public void onItemClicked(Integer item, View view) {
@@ -43,7 +53,14 @@ public class SamplesListFragment extends Fragment {
                 }
             }
         };
-        mAdapter = new SamplesListAdapter(new ArrayList<>(Arrays.asList(samples)), onRecylerViewItemClicked);
+
+        if (getArguments().containsKey(LIST_ITEMS)) {
+            ArrayList<String> simpleList = getArguments().getStringArrayList(LIST_ITEMS);
+            mAdapter = new SimpleRecyclerViewAdapter(simpleList, onRecylerViewItemClicked);
+        } else {
+            Log.e(TAG, "Please provide list items while creating the fragment");
+        }
+
     }
 
     @Override

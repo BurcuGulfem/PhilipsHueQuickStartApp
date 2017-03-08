@@ -1,12 +1,15 @@
 package com.philips.lighting.quickstart;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.philips.lighting.samples.DummyFragment;
 import com.philips.lighting.samples.RandomLightsFragment;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * MyApplicationActivity - The starting point for creating your own Hue App.
@@ -14,7 +17,7 @@ import com.philips.lighting.samples.RandomLightsFragment;
  *
  * @author SteveyO
  */
-public class MyApplicationActivity extends Activity implements SamplesListFragment.OnFragmentInteractionListener {
+public class MyApplicationActivity extends AppCompatActivity implements SamplesListFragment.OnFragmentInteractionListener {
     public static final String TAG = "QuickStart";
 
     @Override
@@ -25,7 +28,8 @@ public class MyApplicationActivity extends Activity implements SamplesListFragme
 
         //Add the home fragment at app opening.
         //We don't add this to backstack so we don't see a blank activity on back press
-        Fragment samplesListFragment = new SamplesListFragment();
+        final String[] samples = getResources().getStringArray(R.array.samples_list);
+        Fragment samplesListFragment = SamplesListFragment.newInstance(new ArrayList<>(Arrays.asList(samples)));
         openNewFragment(samplesListFragment, false, false);
     }
 
