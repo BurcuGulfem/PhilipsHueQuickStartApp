@@ -35,7 +35,7 @@ public class SimpleRecyclerViewAdapter extends RecyclerView.Adapter<SimpleRecycl
 
     @Override
     public SamplesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem_samples, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.simple_recyclerview_listitem, parent, false);
         final SamplesViewHolder viewHolder = new SamplesViewHolder(v);
         v.setOnClickListener(new View.OnClickListener() {
             @Override
